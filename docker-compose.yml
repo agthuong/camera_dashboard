@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  camera-ui:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: camera-ui
+    restart: unless-stopped
+    expose:
+      - "8082"
+    volumes:
+      - camera-ui-data:/app/.camera.ui
+    environment:
+      - NODE_ENV=production
+      - TZ=Asia/Ho_Chi_Minh
+      - PORT=8082
+    networks:
+      - app-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-proxy
+    restart: unless-stopped
+    ports:
+      - "8085:443"
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d
+      - ./nginx/ssl:/etc/nginx/ssl
+    depends_on:
+      - camera-ui
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  camera-ui-data:
+    driver: local
