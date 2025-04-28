@@ -7,11 +7,6 @@
     .page-subtitle-info {{ $t('interface_appearance') }}
 
     .tw-w-full.tw-mt-4
-      label.form-input-label {{ $t('mode') }}
-      v-select(v-model="appearance.mode" :items="modes" prepend-inner-icon="mdi-theme-light-dark" background-color="var(--cui-bg-card)" required solo)
-        template(v-slot:prepend-inner)
-          v-icon.text-muted {{ icons['mdiThemeLightDark'] }}
-
       label.form-input-label {{ $t('color') }}
       v-select(v-model="appearance.color" :items="colors" prepend-inner-icon="mdi-palette" background-color="var(--cui-bg-card)" required solo)
         template(v-slot:prepend-inner)
@@ -51,7 +46,7 @@ export default {
       appearance: {
         color: 'pink',
         lang: 'en',
-        mode: 'dark',
+        mode: 'light',
       },
 
       modes: [
@@ -98,10 +93,13 @@ export default {
       ),
     ];
 
-    this.appearance.color = localStorage.getItem('theme-color') || 'pink';
+    this.appearance.color = localStorage.getItem('theme-color') || 'dbplus';
     this.appearance.lang = this.uiConfig.currentLanguage || 'en';
-    this.appearance.mode =
-      localStorage.getItem('darkmode') === 'auto' ? 'auto' : localStorage.getItem('theme') || 'light';
+    this.appearance.mode = 'light';
+    
+    localStorage.setItem('theme', 'light');
+    localStorage.setItem('darkmode', 'manual');
+    document.documentElement.setAttribute('data-theme', 'light');
 
     this.$watch('appearance', this.appearanceWatcher, { deep: true });
 
@@ -113,22 +111,15 @@ export default {
     async appearanceWatcher(newValue) {
       this.loadingProgress = true;
 
-      const autoMode = newValue.mode === 'auto';
-      let mode = newValue.mode;
       let color = newValue.color;
 
-      if (autoMode) {
-        localStorage.setItem('darkmode', 'auto');
+      localStorage.setItem('darkmode', 'manual');
+      localStorage.setItem('theme', 'light');
+      document.documentElement.setAttribute('data-theme', 'light');
 
-        mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', this.matchMediaListener);
-      } else {
-        localStorage.setItem('darkmode', 'manual');
+      window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', this.matchMediaListener);
 
-        window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', this.matchMediaListener);
-      }
-
-      const theme = `${mode}-${color}`;
+      const theme = `light-${color}`;
       this.$store.commit('config/setTheme', theme);
 
       const lang = newValue.lang;
@@ -136,18 +127,7 @@ export default {
 
       this.loadingProgress = false;
     },
-    matchMediaListener(event) {
-      const autoDarkmode = localStorage.getItem('darkmode') === 'auto';
-
-      if (autoDarkmode) {
-        if (event.matches) {
-          localStorage.setItem('theme', 'dark');
-          document.documentElement.setAttribute('data-theme', 'dark');
-        } else {
-          localStorage.setItem('theme', 'light');
-          document.documentElement.setAttribute('data-theme', 'light');
-        }
-      }
+    matchMediaListener() {
     },
   },
 };

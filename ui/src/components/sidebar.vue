@@ -3,7 +3,7 @@
   
   .tw-flex.tw-flex-row.tw-justify-between.pt-safe.pl-safe
     .logo.tw-cursor-pointer(@click="$router.push('/dashboard')")
-      img.tw-object-contain(:src="require('../assets/img/logo.png')" alt="camera.ui" style="width: 38px; height: 44px;")
+      img.tw-object-contain(:src="require('../assets/img/logo.png')" alt="DBplus camera" style="width: 48px; height: 54px;")
 
     .tw-block.tw-ml-auto(v-if="showSidebarContent")
       v-menu.included.tw-z-30(v-model="showProfileMenu" transition="slide-y-transition" min-width="220px" :close-on-content-click="false" offset-y bottom left nudge-top="-15" z-index="999" content-class="light-shadow")
@@ -90,7 +90,7 @@
             span.sidebar-nav-item-text {{ $t(point.name.toLowerCase()) }}
             
         .tw-block.tw-text-center.tw-my-2.sidebar-nav-footer
-          span.version v{{ version.split('-')[0] }}
+          span.version DBplus
 
     .tw-flex.tw-flex-col.tw-h-full.tw.tw-pt-10(v-if="showSidebarMinifiedNav" key="nav")
       
@@ -117,7 +117,7 @@
             v-icon(height="24px" width="24px") {{ icons[point.icon] }}
             
         .tw-block.tw-text-center.tw-my-2.sidebar-nav-footer
-          span.version v{{ version.split('-')[0] }}
+          span.version DBplus
 
 </template>
 

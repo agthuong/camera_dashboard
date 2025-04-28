@@ -9,10 +9,10 @@
           span.subtitle.tw-font-medium {{ $t('welcome_message') }} 
             strong.text-primary DBplus
         .tw-ml-auto
-          v-img.logo(:src="require('@/assets/img/logo.png')" width="35px")
+          v-img.logo(:src="require('@/assets/img/logo.png')" width="80px")
       v-row.tw-w-full.tw-m-0.tw-mt-5
         v-col.tw-p-0(cols="3").redline.mr-3
-        v-col.tw-p-0(cols="3").grayline
+        v-col.tw-p-0(cols="3").graylin
         
       v-form.login-content.tw-mt-5(ref="form" v-model="valid" lazy-validation @submit.prevent="signin")
         
@@ -24,7 +24,6 @@
         
         v-btn.login-btn.tw-text-white.tw-mt-2(:loading="loading" block depressed color="var(--cui-primary)" height="48px" type="submit") {{ $t('signin') }}
               
-  span.tw-text-xs.text-muted {{ moduleName }} - v{{ version }}
 </template>
 
 <script>
@@ -60,7 +59,7 @@ export default {
 
       valid: true,
 
-      moduleName: 'camera.ui',
+      moduleName: 'DBplus camera',
       version: version,
     };
   },
@@ -80,7 +79,7 @@ export default {
   created() {
     this.loadRestart = this.restarted;
 
-    this.moduleName = this.uiConfig?.env?.moduleName || 'camera.ui';
+    this.moduleName = this.uiConfig?.env?.moduleName || 'DBplus camera';
     this.version = this.uiConfig.version || version;
   },
 

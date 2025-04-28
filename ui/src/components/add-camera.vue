@@ -236,7 +236,7 @@ export default {
   data() {
     return {
       env: '',
-      moduleName: 'camera.ui',
+      moduleName: 'DBplus camera',
 
       valid: true,
       rules: {
@@ -303,7 +303,7 @@ export default {
 
   mounted() {
     this.env = process.env.NODE_ENV;
-    this.moduleName = this.uiConfig?.env?.moduleName || 'camera.ui';
+    this.moduleName = this.uiConfig?.env?.moduleName || 'DBplus camera';
 
     this.camReset = { ...this.cam };
     this.loading = false;

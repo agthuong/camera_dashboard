@@ -1,9 +1,9 @@
 <?xml version="1.0" standalone="yes"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-40 -30 300 300">
-  <path style="fill:#f1f1f1; stroke:none;" d="M0 0L0 225L225 225L225 0L0 0z" />
+<svg xmlns="http://www.w3.org/2000/svg" width="225" height="225">
+  <path style="fill:#ffffff; stroke:none;" d="M0 0L0 225L225 225L225 0L0 0z" />
   <path style="fill:#dee9b7; stroke:none;"
     d="M56 31L56 41L46 41C49.4324 42.4403 53.2998 42 57 42C57 38.2998 57.4403 34.4324 56 31z" />
-  <path id="lens" class="cameraLens" style="fill:#a3cc35; stroke:none;"
+  <path id="lens" style="fill:#a3cc35; stroke:none;"
     d="M57 31L57 42L46 42L46 44L57 44L57 55L59 55C59.0069 46.1025 61.1025 44.0069 70 44L70 42L59 42L59 31L57 31z" />
   <path style="fill:#c6df8b; stroke:none;" d="M59 31L59 42C60.4309 38.59 60.4309 34.41 59 31z" />
   <path style="fill:#dee9b7; stroke:none;"
@@ -190,14 +190,14 @@
   <path style="fill:#b9c8d1; stroke:none;" d="M200 131L201 132L200 131z" />
   <path style="fill:#8096a9; stroke:none;" d="M85 132L86 133L85 132z" />
   <path style="fill:#5c748f; stroke:none;" d="M98 132L99 133L98 132z" />
-  <path style="fill:#f1f1f1; stroke:none;"
+  <path style="fill:#ffffff; stroke:none;"
     d="M99 132.702C93.6175 134.489 88.8908 139.024 85.0394 143.004C76.2799 152.056 69.7162 162.719 64.2585 174C62.3721 177.899 54.1255 195.49 65.0046 193.304C71.0181 192.096 76.724 187.042 81 182.961C90.4744 173.917 99.5335 163.941 105.215 152C108.297 145.522 111.563 128.533 99 132.702z" />
   <path style="fill:#93a5b5; stroke:none;" d="M149 132L150 133L149 132z" />
   <path style="fill:#6c8298; stroke:none;" d="M160 132L161 133L160 132z" />
   <path style="fill:#b9c8d1; stroke:none;" d="M172 132L173 133L172 132z" />
   <path style="fill:#506a8b; stroke:none;" d="M182 132L183 133L182 132z" />
   <path style="fill:#a8b7c5; stroke:none;" d="M183 132L184 133L183 132z" />
-  <path style="fill:#f1f1f1; stroke:none;"
+  <path style="fill:#ffffff; stroke:none;"
     d="M183.999 132.602C178.578 133.682 173.801 138.313 170 142.015C160.655 151.117 152.548 161.57 148.09 174C146.145 179.422 142.576 195.719 153.001 194.358C158.45 193.646 163.296 188.637 166.996 184.985C176.628 175.48 183.824 163.395 189.127 151C191.48 145.502 195.189 130.373 183.999 132.602z" />
   <path style="fill:#8096a9; stroke:none;" d="M188 132L189 133L188 132z" />
   <path style="fill:#b9c8d1; stroke:none;" d="M83 133L84 134L83 133z" />

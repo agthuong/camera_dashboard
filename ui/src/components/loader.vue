@@ -1,6 +1,6 @@
 <template lang="pug">
 .loader.tw-flex.tw-justify-center.tw-align-center
-  img.tw-object-contain(:src="require('../assets/img/logo.png')" alt="camera.ui" style="width: 200px;")
+  inline-svg.tw-object-contain(:src="require('../assets/img/logo_loading_circle.svg')" alt="DBplus camera" style="width: 400px;")
 </template>
 
 <script>
@@ -22,23 +22,16 @@ export default {
   }),
 
   mounted() {
-    // Vô hiệu hóa animation JavaScript, không cần thiết với logo tĩnh
-    /* 
     if (this.reload) {
       this.loaderTimeout = setInterval(() => {
-        const cameraUiLens = document.getElementById('lens');
-        cameraUiLens?.classList.remove('cameraLens');
-
-        const cameraUiLetter = document.getElementById('CameraUI_U');
-        cameraUiLetter?.classList.remove('cameraLetter');
+        const dbplusLens = document.getElementById('lens');
+        dbplusLens?.classList.remove('cameraLens');
 
         setTimeout(() => {
-          cameraUiLens?.classList.add('cameraLens');
-          cameraUiLetter?.classList.add('cameraLetter');
+          dbplusLens?.classList.add('cameraLens');
         }, 100);
       }, 2300);
     }
-    */
   },
 
   beforeDestroy() {
@@ -61,7 +54,6 @@ export default {
   max-height: 100vh;
 }
 
-/* Vô hiệu hóa tất cả animation CSS không còn cần thiết với logo tĩnh
 div >>> .cameraLens {
   -webkit-animation: lensMove 0.8s cubic-bezier(0.47, 1.84, 0.21, 0.8) forwards,
     lensRotate 0.8s ease-in-out 0.4s forwards, lensMoveBack 0.6s cubic-bezier(0.47, 1.84, 0.21, 0.8) 1.3s forwards;
@@ -71,55 +63,10 @@ div >>> .cameraLens {
     lensMoveBack 0.6s cubic-bezier(0.47, 1.84, 0.21, 0.8) 1.3s forwards;
   animation: lensMove 0.8s cubic-bezier(0.47, 1.84, 0.21, 0.8) forwards, lensRotate 0.8s ease-in-out 0.4s forwards,
     lensMoveBack 0.6s cubic-bezier(0.47, 1.84, 0.21, 0.8) 1.3s forwards;
-  -webkit-transform-origin: 35% 55%;
-  -moz-transform-origin: 35% 55%;
-  -o-transform-origin: 35% 55%;
-  transform-origin: 35% 55%;
-}
-
-div >>> .cameraLetter {
-  -moz-animation: letterScale 0.4s cubic-bezier(0.47, 1.84, 0.21, 0.8) forwards,
-    letterScaleBack 0.4s cubic-bezier(0.47, 1.84, 0.21, 0.8) 1.2s forwards;
-  -o-animation: letterScale 0.4s cubic-bezier(0.47, 1.84, 0.21, 0.8) forwards,
-    letterScaleBack 0.4s cubic-bezier(0.47, 1.84, 0.21, 0.8) 1.2s forwards;
-  -webkit-animation: letterScale 0.4s cubic-bezier(0.47, 1.84, 0.21, 0.8) forwards,
-    letterScaleBack 0.4s cubic-bezier(0.47, 1.84, 0.21, 0.8) 1.2s forwards;
-  animation: letterScale 0.4s cubic-bezier(0.47, 1.84, 0.21, 0.8) forwards,
-    letterScaleBack 0.4s cubic-bezier(0.47, 1.84, 0.21, 0.8) 1.2s forwards;
-  -webkit-transform-origin: center;
-  -moz-transform-origin: center;
-  -o-transform-origin: center;
-  transform-origin: center;
-}
-
-@keyframes letterScale {
-  0% {
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -o-transform: scale(1);
-    transform: scale(1);
-  }
-  100% {
-    -webkit-transform: scale(0.8);
-    -moz-transform: scale(0.8);
-    -o-transform: scale(0.8);
-    transform: scale(0.8);
-  }
-}
-
-@keyframes letterScaleBack {
-  0% {
-    -webkit-transform: scale(0.8);
-    -moz-transform: scale(0.8);
-    -o-transform: scale(0.8);
-    transform: scale(0.8);
-  }
-  100% {
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -o-transform: scale(1);
-    transform: scale(1);
-  }
+  -webkit-transform-origin: 69px 80px;
+  -moz-transform-origin: 69px 80px;
+  -o-transform-origin: 69px 80px;
+  transform-origin: 69px 80px;
 }
 
 @keyframes lensMove {
@@ -130,19 +77,19 @@ div >>> .cameraLetter {
     transform: translateY(0px);
   }
   100% {
-    -webkit-transform: translateY(-40px);
-    -moz-transform: translateY(-40px);
-    -o-transform: translateY(-40px);
-    transform: translateY(-40px);
+    -webkit-transform: translateY(-15px);
+    -moz-transform: translateY(-15px);
+    -o-transform: translateY(-15px);
+    transform: translateY(-15px);
   }
 }
 
 @keyframes lensMoveBack {
   0% {
-    -webkit-transform: translateY(-40px);
-    -moz-transform: translateY(-40px);
-    -o-transform: translateY(-40px);
-    transform: translateY(-40px);
+    -webkit-transform: translateY(-15px);
+    -moz-transform: translateY(-15px);
+    -o-transform: translateY(-15px);
+    transform: translateY(-15px);
   }
   100% {
     -webkit-transform: translateY(0px);
@@ -154,17 +101,16 @@ div >>> .cameraLetter {
 
 @keyframes lensRotate {
   0% {
-    -webkit-transform: translateY(-40px) rotate(0deg);
-    -moz-transform: translateY(-40px) rotate(0deg);
-    -o-transform: translateY(-40px) rotate(0deg);
-    transform: translateY(-40px) rotate(0deg);
+    -webkit-transform: translateY(-15px) rotate(0deg);
+    -moz-transform: translateY(-15px) rotate(0deg);
+    -o-transform: translateY(-15px) rotate(0deg);
+    transform: translateY(-15px) rotate(0deg);
   }
   100% {
-    -webkit-transform: translateY(-40px) rotate(-360deg);
-    -moz-transform: translateY(-40px) rotate(-360deg);
-    -o-transform: translateY(-40px) rotate(-360deg);
-    transform: translateY(-40px) rotate(-360deg);
+    -webkit-transform: translateY(-15px) rotate(360deg);
+    -moz-transform: translateY(-15px) rotate(360deg);
+    -o-transform: translateY(-15px) rotate(360deg);
+    transform: translateY(-15px) rotate(360deg);
   }
 }
-*/
 </style>

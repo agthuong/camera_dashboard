@@ -19,7 +19,7 @@
           .tw-block
             v-img(:src="require('@/assets/img/logo.png')" width="42" height="50")
           h5.tw-text-xl.tw-font-light.tw-mt-3 {{ $t('welcome_message') }}
-          h1.tw-text-4xl.tw-font-black.tw-leading-7 camera.ui
+          h1.tw-text-4xl.tw-font-black.tw-leading-7 DBplus camera
           .tw-mt-5.text-muted.tw-text-center.tw-text-sm {{ startMsg1 }}
             br 
             | {{ startMsg2 }}
@@ -51,7 +51,7 @@
         v-card.start-content.tw-flex.tw-justify-center.tw-items-center.tw-flex-col(height="320px")
 
           .tw-block
-            img.tw-object-contain(:src="require('../../assets/img/logo.png')" alt="camera.ui" style="width: 78px; height: 84px;")
+            img.tw-object-contain(:src="require('../../assets/img/logo.png')" alt="DBplus camera" style="width: 78px; height: 84px;")
 
           .tw-mt-8.text-muted.tw-text-center.tw-text-base 
             strong.tw-text-white {{ endMsg1 }}

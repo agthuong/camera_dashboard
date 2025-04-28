@@ -45,7 +45,7 @@ export default {
     currentVersion: null,
     latestVersion: null,
     updateAvailable: false,
-    npmPackageName: 'camera.ui',
+    npmPackageName: 'DBplus camera',
   }),
 
   async mounted() {

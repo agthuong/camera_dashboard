@@ -327,3 +327,37 @@
   --cui-primary: #7c48c2;
   --cui-primary-rgb: 124, 72, 194;
 }
+
+[data-theme-color='dbplus'] {
+  /* Sử dụng 'dbplus' làm tên màu */
+  /* Màu chính */
+  --cui-primary: #00396b;
+  --cui-primary-rgb: 0, 57, 107;
+
+  /* Các biến màu khác - Bạn nên sao chép cấu trúc từ một màu khác (vd: blue) và điều chỉnh nếu cần */
+  --cui-primary-0: #ffffff;
+  --cui-primary-0-rgb: 255, 255, 255;
+  --cui-primary-50: #e6ebee;
+  /* Ví dụ - Cần điều chỉnh các sắc thái */
+  --cui-primary-50-rgb: 230, 235, 238;
+  --cui-primary-100: #b3c3d0;
+  --cui-primary-100-rgb: 179, 195, 208;
+  --cui-primary-200: #809baa;
+  --cui-primary-200-rgb: 128, 155, 170;
+  --cui-primary-300: #4d7285;
+  --cui-primary-300-rgb: 77, 114, 133;
+  --cui-primary-400: #1a4a5f;
+  --cui-primary-400-rgb: 26, 74, 95;
+  --cui-primary-500: #00396b;
+  /* Màu chính của bạn */
+  --cui-primary-500-rgb: 0, 57, 107;
+  --cui-primary-600: #00335f;
+  /* Sắc thái tối hơn */
+  --cui-primary-600-rgb: 0, 51, 95;
+  --cui-primary-700: #002c53;
+  --cui-primary-700-rgb: 0, 44, 83;
+  --cui-primary-800: #002647;
+  --cui-primary-800-rgb: 0, 38, 71;
+  --cui-primary-900: #001f3b;
+  --cui-primary-900-rgb: 0, 31, 59;
+}

@@ -83,12 +83,12 @@ export default {
 
       cpuData: {
         label: this.$t('system'),
-        label2: 'camera.ui',
+        label2: 'DBplus camera',
         data: [],
       },
       memoryData: {
         label: this.$t('system'),
-        label2: 'camera.ui',
+        label2: 'DBplus camera',
         data: [],
       },
       tempData: {
@@ -97,7 +97,7 @@ export default {
       },
       diskSpaceData: {
         label: this.$t('system'),
-        label2: this.$t('recordings'),
+        label2: 'DBplus camera',
         data: [],
       },
 

@@ -895,7 +895,7 @@ export default {
         rooms: [],
       },
 
-      moduleName: 'camera.ui',
+      moduleName: 'DBplus camera',
       hostname: window.location.hostname,
 
       search: null,
@@ -913,6 +913,10 @@ export default {
 
       prebufferingStates: {},
       videoanalysisStates: {},
+      maxHosts: 50,
+      modalCameras: [],
+      modalDialog: false,
+      modes: [],
     };
   },
 

@@ -291,18 +291,18 @@ export default {
 
   methods: {
     initializeDefaultChart() {
-      if (this.item.id === 'cpuLoad') {
-        this.dataset.label = this.$t('load');
-        this.$socket.client.on('cpuLoad', this.cpuLoad);
-        this.$socket.client.emit('getCpuLoad');
-      } else if (this.item.id === 'cpuTemperature') {
-        this.dataset.label = this.$t('temperature');
-        this.$socket.client.on('cpuTemp', this.cpuTemp);
-        this.$socket.client.emit('getCpuTemp');
-      } else {
-        this.dataset.label = this.$t('memory');
-        this.$socket.client.on('memory', this.memory);
-        this.$socket.client.emit('getMemory');
+    if (this.item.id === 'cpuLoad') {
+      this.dataset.label = this.$t('load');
+      this.$socket.client.on('cpuLoad', this.cpuLoad);
+      this.$socket.client.emit('getCpuLoad');
+    } else if (this.item.id === 'cpuTemperature') {
+      this.dataset.label = this.$t('temperature');
+      this.$socket.client.on('cpuTemp', this.cpuTemp);
+      this.$socket.client.emit('getCpuTemp');
+    } else {
+      this.dataset.label = this.$t('memory');
+      this.$socket.client.on('memory', this.memory);
+      this.$socket.client.emit('getMemory');
       }
       this.customChart = false;
     },
@@ -479,13 +479,13 @@ export default {
         
         // Ngắt kết nối socket của chart mặc định nếu đang sử dụng custom chart
         if (this.useCustomChart) {
-          if (this.item.id === 'cpuLoad') {
-            this.$socket.client.off('cpuLoad', this.cpuLoad);
-          } else if (this.item.id === 'cpuTemperature') {
-            this.$socket.client.off('cpuTemp', this.cpuTemp);
-          } else {
-            this.$socket.client.off('memory', this.memory);
-          }
+    if (this.item.id === 'cpuLoad') {
+      this.$socket.client.off('cpuLoad', this.cpuLoad);
+    } else if (this.item.id === 'cpuTemperature') {
+      this.$socket.client.off('cpuTemp', this.cpuTemp);
+    } else {
+      this.$socket.client.off('memory', this.memory);
+    }
         }
 
         // Lưu lại cấu hình, sử dụng URL đã trích xuất nếu là iframe

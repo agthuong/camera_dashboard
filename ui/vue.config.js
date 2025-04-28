@@ -27,7 +27,7 @@ module.exports = {
   outputDir: path.resolve(__dirname, '../interface'),
   productionSourceMap: false,
   pwa: {
-    name: 'camera.ui',
+    name: 'DBplus camera',
     themeColor: '#f1f1f1',
     msTileColor: '#f1f1f1',
     appleMobileWebAppCapable: 'yes',
@@ -37,9 +37,9 @@ module.exports = {
     manifestOptions: {
       lang: 'en',
       dir: 'ltr',
-      name: 'camera.ui',
-      short_name: 'camera.ui',
-      description: 'camera.ui is a user interface for RTSP capable cameras.',
+      name: 'DBplus camera',
+      short_name: 'DBplus camera',
+      description: 'DBplus camera là ứng dụng hiển thị và quản lý camera dự án.',
       theme_color: '#f1f1f1',
       background_color: '#f1f1f1',
       display: 'standalone',
@@ -138,7 +138,7 @@ module.exports = {
     config.performance.maxEntrypointSize(500000).maxAssetSize(500000);
     config.plugin('html').tap((arguments_) => {
       const payload = arguments_;
-      payload[0].title = 'camera.ui';
+      payload[0].title = 'DBplus camera';
       return payload;
     });
   },
