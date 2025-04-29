@@ -261,8 +261,6 @@ export default {
         this.maintainAspectRatio = chartWidget.maintainAspectRatio !== undefined ? chartWidget.maintainAspectRatio : false;
         this.aspectRatio = chartWidget.aspectRatio || 56.25;
         
-        console.log(`[Chart Widget ${this.item.id}] Khởi tạo với URL: ${chartWidget.chartUrl}`);
-        
         if (this.useCustomChart) {
           this.customChart = true;
           this.processChart();
@@ -448,8 +446,6 @@ export default {
         this.isIframeCode = isIframe;
         this.chartUrl = url;
         
-        console.log(`[Chart Widget ${this.item.id}] Xử lý chart với URL: ${url}`);
-        
         if (isIframe) {
           // Nếu là iframe, cập nhật giá trị hiển thị trong ô input thành URL đã trích xuất
           console.log('Đang chuyển đổi iframe thành URL:', url);
@@ -531,8 +527,6 @@ export default {
         const chartWidget = items.find((item) => item.id === this.item.id);
 
         if (chartWidget?.lastUpdated && chartWidget.lastUpdated !== this.lastUpdated) {
-          console.log(`[Chart Widget ${this.item.id}] Cập nhật từ xa với URL: ${chartWidget.chartUrl}`);
-          
           this.chartUrlInput = chartWidget.chartUrl || '';
           this.originalInput = chartWidget.chartUrl || '';
           this.chartTitleInput = chartWidget.chartTitle || '';
@@ -575,21 +569,12 @@ export default {
 
     // Các hàm xử lý dữ liệu từ socket cho chart mặc định
     cpuLoad(data) {
-      if (data && data.length > 0) {
-        console.log(`[Chart Widget ${this.item.id}] Nhận dữ liệu CPU Load: ${data[data.length-1].value}%`);
-      }
       this.dataset.data = data;
     },
     cpuTemp(data) {
-      if (data && data.length > 0) {
-        console.log(`[Chart Widget ${this.item.id}] Nhận dữ liệu CPU Temp: ${data[data.length-1].value}°`);
-      }
       this.dataset.data = data;
     },
     memory(data) {
-      if (data && data.length > 0) {
-        console.log(`[Chart Widget ${this.item.id}] Nhận dữ liệu Memory: ${data[data.length-1].value}%, Available: ${data[data.length-1].available}GB`);
-      }
       this.dataset.data = data;
     },
 
@@ -604,7 +589,7 @@ export default {
         this.iframeLoadTimeout = null;
       }
       
-      console.log(`[Chart Widget ${this.item.id}] Iframe đã tải thành công: ${this.chartUrl}`);
+      console.log('Iframe đã tải thành công:', this.chartUrl);
       
       // Thử truy cập nội dung iframe để kiểm tra cross-origin
       try {
@@ -625,60 +610,13 @@ export default {
       this.iframeLoading = false;
       this.iframeError = true;
       this.iframeErrorCount++;
-      console.error(`[Chart Widget ${this.item.id}] Không thể tải iframe (lần thử ${this.iframeErrorCount}): ${this.chartUrl}`);
-      
-      // Phát hiện nếu đang truy cập qua ngrok
-      const isNgrok = window.location.hostname.includes('ngrok') || 
-                      window.location.href.includes('ngrok');
-      
-      // Thử tự động sử dụng proxy khi gặp lỗi CORS
-      if (this.iframeErrorCount === 1) {
-        console.log('Đang thử sử dụng proxy server để giải quyết vấn đề CORS...');
-        
-        // Nếu là ngrok, luôn sử dụng proxy API
-        if (isNgrok) {
-          console.log('Phát hiện ngrok, sử dụng proxy API...');
-          const originalUrl = this.chartUrl;
-          this.chartUrl = `/api/proxy?url=${encodeURIComponent(originalUrl)}`;
-          console.log(`[Chart Widget ${this.item.id}] Đã chuyển đổi sang sử dụng proxy server: ${this.chartUrl}`);
-        }
-        // Xử lý riêng cho wazimap.co.za
-        else if (this.chartUrl.includes('wazimap.co.za')) {
-          const originalUrl = this.chartUrl;
-          // Chuyển đổi sang sử dụng proxy server
-          this.chartUrl = `/api/proxy?url=${encodeURIComponent(originalUrl)}`;
-          console.log(`[Chart Widget ${this.item.id}] Đã chuyển đổi sang sử dụng proxy server: ${this.chartUrl}`);
-        }
-        
-        setTimeout(() => {
-          this.retryIframeLoad();
-        }, 1000);
-      }
-      // Nếu lỗi lần thứ 2, gọi API kiểm tra headers để chuẩn đoán vấn đề
-      else if (this.iframeErrorCount === 2) {
-        console.log('Đang gọi API kiểm tra headers...');
-        fetch('/api/check-headers')
-          .then(response => response.json())
-          .then(data => {
-            console.log(`[Chart Widget ${this.item.id}] Kết quả kiểm tra headers:`, data);
-            setTimeout(() => {
-              this.retryIframeLoad();
-            }, 1000);
-          })
-          .catch(error => {
-            console.error('Lỗi khi kiểm tra headers:', error);
-            setTimeout(() => {
-              this.retryIframeLoad();
-            }, 1000);
-          });
-      }
+      console.error(`Không thể tải iframe (lần thử ${this.iframeErrorCount}):`, this.chartUrl);
     },
     
     retryIframeLoad() {
       this.iframeLoading = true;
       this.iframeError = false;
       this.iframeKey++; // Force iframe reload
-      console.log(`[Chart Widget ${this.item.id}] Thử tải lại iframe với URL: ${this.chartUrl}`);
       
       // Đặt timeout phòng khi iframe không kích hoạt event load hoặc error
       this.iframeLoadTimeout = setTimeout(() => {
