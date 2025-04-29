@@ -45,9 +45,10 @@ export default class Socket {
     Socket.io = LoggerService.socket = new Server(server, {
       cors: {
         origin: '*',
-        methods: ['GET', 'POST'],
+        methods: ['GET', 'POST', 'OPTIONS'],
         credentials: true,
-        allowedHeaders: ['Authorization', 'Content-Type']
+        allowedHeaders: ['Authorization', 'Content-Type', 'X-Requested-With', 'Origin', 'Accept'],
+        exposedHeaders: ['Cross-Origin-Resource-Policy']
       },
       transports: ['websocket', 'polling'],
       allowEIO3: true,
@@ -56,11 +57,22 @@ export default class Socket {
     });
 
     log.debug('Socket.io server initialized with configuration:', {
-      cors: '*',
+      cors: {
+        origin: '*',
+        methods: ['GET', 'POST', 'OPTIONS'],
+        credentials: true,
+        allowedHeaders: ['Authorization', 'Content-Type', 'X-Requested-With', 'Origin', 'Accept'],
+        exposedHeaders: ['Cross-Origin-Resource-Policy']
+      },
       transports: ['websocket', 'polling'],
       allowEIO3: true,
       pingTimeout: 60000,
       pingInterval: 25000
+    });
+
+    // Middleware để thêm Cross-Origin-Resource-Policy header
+    Socket.io.engine.on('headers', (headers, req) => {
+      headers['Cross-Origin-Resource-Policy'] = 'cross-origin';
     });
 
     Socket.io.use((socket, next) => {

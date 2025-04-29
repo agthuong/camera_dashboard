@@ -22,6 +22,11 @@ export const serve = async (req, res, next) => {
       recPath = ConfigService.databaseUserPath;
     }
 
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
+
     let options = {
       root: path.join(recPath),
     };

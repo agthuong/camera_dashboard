@@ -38,6 +38,15 @@ const getBearerToken = async (username, password) => {
 };
 
 export const validJWTNeeded = async (req, res, next) => {
+  // Tùy chỉnh đặc biệt cho ngrok
+  const isNgrok = req.headers.host?.includes('ngrok') || req.headers.referer?.includes('ngrok');
+
+  // Cho phép truy cập widgets API khi sử dụng ngrok (mục đích phát triển)
+  if (isNgrok && req.path === '/api/settings/widgets') {
+    console.log('Cho phép truy cập API settings/widgets qua ngrok không cần xác thực');
+    return next();
+  }
+
   if (req.query.username && req.query.password) {
     const authorization = await getBearerToken(req.query.username, req.query.password);
     if (authorization) {
