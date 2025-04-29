@@ -67,14 +67,16 @@ export default class App {
       helmet.contentSecurityPolicy({
         useDefaults: false,
         directives: {
-          defaultSrc: ["'unsafe-eval'", "'unsafe-inline'", "'self'"],
-          scriptSrc: ["'unsafe-eval'", "'unsafe-inline'", "'self'", 'https://*.googleapis.com', 'blob:', 'data:'],
-          childSrc: ["'unsafe-eval'", "'unsafe-inline'", "'self'", 'blob:', 'https:'],
-          fontSrc: ["'unsafe-eval'", "'unsafe-inline'", "'self'", 'data:'],
+          defaultSrc: ["'unsafe-eval'", "'unsafe-inline'", "'self'", '*'],
+          scriptSrc: ["'unsafe-eval'", "'unsafe-inline'", "'self'", 'https://*.googleapis.com', 'blob:', 'data:', '*'],
+          frameSrc: ["'self'", '*', 'data:', 'blob:', 'https:', 'http:'],
+          childSrc: ["'unsafe-eval'", "'unsafe-inline'", "'self'", 'blob:', 'https:', 'http:', '*'],
+          fontSrc: ["'unsafe-eval'", "'unsafe-inline'", "'self'", 'data:', '*'],
           connectSrc: [
             'ws:',
             'wss:',
             'https:',
+            'http:',
             'blob:',
             'data:',
             'file:',
@@ -85,9 +87,10 @@ export default class App {
             "'unsafe-eval'",
             "'unsafe-inline'",
             "'self'",
+            '*'
           ],
-          imgSrc: ["'unsafe-eval'", "'unsafe-inline'", "'self'", 'data:', 'blob:', 'https://openweathermap.org'],
-          mediaSrc: ["'unsafe-eval'", "'unsafe-inline'", "'self'", 'data:', 'blob:'],
+          imgSrc: ["'unsafe-eval'", "'unsafe-inline'", "'self'", 'data:', 'blob:', 'https://openweathermap.org', '*'],
+          mediaSrc: ["'unsafe-eval'", "'unsafe-inline'", "'self'", 'data:', 'blob:', '*'],
         },
       })
     );

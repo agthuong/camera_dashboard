@@ -36,6 +36,9 @@
         @load="handleIframeLoad"
         @error="handleIframeError"
         ref="chartIframe"
+        allow="fullscreen; payment; accelerometer; autoplay; camera; display-capture; encrypted-media; geolocation; gyroscope; microphone; midi; picture-in-picture"
+        sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation"
+        referrerpolicy="no-referrer"
       )
     iframe.tw-w-full.tw-h-full(
       v-else
@@ -45,6 +48,9 @@
       style="border-radius: 8px;"
       @load="handleIframeLoad"
       @error="handleIframeError"
+      allow="fullscreen; payment; accelerometer; autoplay; camera; display-capture; encrypted-media; geolocation; gyroscope; microphone; midi; picture-in-picture"
+      sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation"
+      referrerpolicy="no-referrer"
     )
 
   .chart-content.tw-relative.tw-overflow-hidden(v-else)
