@@ -1,4 +1,4 @@
-importScripts("/precache-manifest.fa1f57a42ddc7102a1312aa10f5a2d03.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+importScripts("/precache-manifest.1d09871ae5e73cc95175d058fe504e1c.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 /* eslint-disable no-undef */
 workbox.core.setCacheNameDetails({ prefix: 'DBplus' });
